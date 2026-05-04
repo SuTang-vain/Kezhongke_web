@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kezhongke Grow | Tutorials</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Source+Han+Serif+SC:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#e4dfff",
+                        "secondary-container": "#c0ecdc",
+                        "on-primary-fixed-variant": "#8b1a00",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-container": "#cf4425",
+                        "surface-container": "#ffe9e4",
+                        "surface": "#fff8f6",
+                        "on-surface": "#261815",
+                        "primary-fixed-dim": "#ffb4a3",
+                        "background": "#fff8f6",
+                        "on-primary-container": "#fffbff",
+                        "error-container": "#ffdad6",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed-dim": "#a5d0c0",
+                        "on-background": "#261815",
+                        "primary-fixed": "#ffdad2",
+                        "secondary": "#3e6659",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed-variant": "#464361",
+                        "inverse-on-surface": "#ffede9",
+                        "on-surface-variant": "#5a413b",
+                        "on-tertiary-fixed": "#1b1833",
+                        "secondary-fixed": "#c0ecdc",
+                        "surface-container-low": "#fff0ed",
+                        "inverse-surface": "#3c2d29",
+                        "inverse-primary": "#ffb4a3",
+                        "surface-tint": "#b02e10",
+                        "surface-container-high": "#fde2dd",
+                        "on-secondary-container": "#446c5f",
+                        "surface-dim": "#eed4cf",
+                        "tertiary-container": "#747191",
+                        "on-secondary": "#ffffff",
+                        "outline-variant": "#e2bfb7",
+                        "surface-bright": "#fff8f6",
+                        "primary": "#ad2c0d",
+                        "on-primary-fixed": "#3d0600",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "tertiary": "#5c5977",
+                        "on-tertiary-container": "#fffbff",
+                        "tertiary-fixed-dim": "#c7c2e6",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed-variant": "#264e42",
+                        "outline": "#8e706a",
+                        "on-secondary-fixed": "#002018",
+                        "surface-variant": "#f7ddd7",
+                        "surface-container-highest": "#f7ddd7"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "glass-padding": "32px",
+                        "margin-desktop": "64px",
+                        "margin-mobile": "20px",
+                        "unit": "8px",
+                        "gutter": "24px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "display-hero": ["Source Han Serif SC"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Source Han Serif SC"],
+                        "headline-lg": ["Source Han Serif SC"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                        "display-hero": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-md": ["28px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "headline-lg": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            background-image: 
+                radial-gradient(circle at 15% 50%, theme('colors.surface-variant') 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, theme('colors.surface-container-low') 0%, transparent 50%);
+            background-attachment: fixed;
+        }
+        
+        .glass-card {
+            background: theme('colors.surface-container-lowest');
+            backdrop-filter: blur(40px) saturate(180%);
+            -webkit-backdrop-filter: blur(40px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 8px 32px 0 rgba(217, 75, 43, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .glass-card:hover {
+            box-shadow: 0 12px 40px 0 rgba(217, 75, 43, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .liquid-button {
+            background: theme('colors.surface-container-highest');
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .liquid-button:hover {
+            transform: scale(1.02);
+            background: theme('colors.surface-variant');
+        }
+
+        .active-filter {
+            background: theme('colors.primary');
+            color: theme('colors.on-primary');
+            border-color: theme('colors.primary');
+        }
+        
+        .active-filter:hover {
+            background: theme('colors.primary');
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md text-on-background min-h-screen flex flex-col relative overflow-x-hidden">
+<!-- Top Navigation -->
+<nav class="fixed top-4 inset-x-4 rounded-2xl border border-white/20 dark:border-white/10 bg-white/30 dark:bg-black/30 backdrop-blur-[40px] saturate-[180%] shadow-[0_8px_32px_0_rgba(217,75,43,0.1)] z-50">
+<div class="flex justify-between items-center w-full max-w-7xl mx-auto px-6 h-16">
+<div class="text-2xl font-bold text-orange-600 dark:text-orange-500 font-serif antialiased tracking-tight">Kezhongke</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-slate-600 dark:text-slate-300 font-serif antialiased tracking-tight hover:bg-white/40 dark:hover:bg-white/10 transition-all duration-300 px-3 py-2 rounded-lg" href="#">Solutions</a>
+<a class="text-slate-600 dark:text-slate-300 font-serif antialiased tracking-tight hover:bg-white/40 dark:hover:bg-white/10 transition-all duration-300 px-3 py-2 rounded-lg" href="#">Research</a>
+<a class="text-orange-600 dark:text-orange-400 border-b-2 border-orange-600 pb-1 font-serif antialiased tracking-tight hover:bg-white/40 dark:hover:bg-white/10 transition-all duration-300 px-3 py-2 rounded-lg" href="#">Grow</a>
+<a class="text-slate-600 dark:text-slate-300 font-serif antialiased tracking-tight hover:bg-white/40 dark:hover:bg-white/10 transition-all duration-300 px-3 py-2 rounded-lg" href="#">Case Studies</a>
+<a class="text-slate-600 dark:text-slate-300 font-serif antialiased tracking-tight hover:bg-white/40 dark:hover:bg-white/10 transition-all duration-300 px-3 py-2 rounded-lg" href="#">About</a>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-orange-600 dark:text-orange-400 cursor-pointer">search</span>
+<button class="font-serif antialiased tracking-tight text-orange-600 dark:text-orange-400 hover:bg-white/40 dark:hover:bg-white/10 transition-all duration-300 px-4 py-2 rounded-lg border border-orange-600/30">Connect</button>
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-grow pt-32 pb-24 px-6 md:px-margin-desktop w-full max-w-container-max mx-auto relative">
+<!-- Mascot Companion -->
+<div class="fixed bottom-8 right-8 z-40 hidden lg:block w-32 h-32 glass-card rounded-full p-2 flex items-center justify-center animate-bounce" style="animation-duration: 3s;">
+<img alt="Learning Companion" class="w-full h-full object-contain rounded-full" data-alt="A cute, minimalist 3D cartoon hermit crab mascot for an AI community called 'Kezhongke'. The style is Apple-inspired, smooth liquid textures, semi-transparent glossy shell, friendly eyes, soft pastel colors (warm white and soft amber). It should look high-end, friendly, and tech-humanistic. Isolated on a white background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWm8cgFtL_j5NyAG3gaFDr19zW0yDUyjJquf2TuZc1OKgEGZurvRoRQQfo-Bc-mqEo525bmTm49wkuKFk-W80Iw3ctSezVkr0MIaHwhn3Q3llXe-f9WFCrzqlnfGwtoy8XC8ljLVvFnkSBHcz0eSFESJfO53wVWfG9mqlMq_fNpBBgRi8D36fq-ilX4uaRMHlLMw7AVgHVC0AfoBNZmMyxoggBEt7F7Vi9dIjyJzVPy2ttlquHq5dKcmf5gYnfNjHLdJH0kstohjw"/>
+</div>
+<!-- Header -->
+<header class="mb-16">
+<h1 class="font-display-hero text-display-hero text-on-surface mb-4">生长 Grow | 教程体系</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Explore our curated collection of tutorials designed to nurture your skills across the intersection of technology and humanistic disciplines. Dive into the liquid flow of knowledge.</p>
+</header>
+<!-- Filters -->
+<section class="mb-12 flex flex-wrap gap-4">
+<button class="liquid-button font-label-caps text-label-caps px-6 py-3 rounded-full active-filter">ALL</button>
+<button class="liquid-button font-label-caps text-label-caps text-on-surface-variant px-6 py-3 rounded-full">AI</button>
+<button class="liquid-button font-label-caps text-label-caps text-on-surface-variant px-6 py-3 rounded-full">AGENT</button>
+<button class="liquid-button font-label-caps text-label-caps text-on-surface-variant px-6 py-3 rounded-full">社会学</button>
+<button class="liquid-button font-label-caps text-label-caps text-on-surface-variant px-6 py-3 rounded-full">设计</button>
+<button class="liquid-button font-label-caps text-label-caps text-on-surface-variant px-6 py-3 rounded-full">工程</button>
+</section>
+<!-- Tutorial Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Card 1 -->
+<article class="glass-card rounded-xl p-glass-padding flex flex-col gap-6 relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+<header class="flex justify-between items-start">
+<span class="font-label-caps text-label-caps text-primary px-3 py-1 rounded-full bg-primary-container/10 border border-primary/20">AI</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">signal_cellular_alt_1_bar</span> Entry
+                    </span>
+</header>
+<div class="flex-grow">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-3 group-hover:text-primary transition-colors">Introduction to Generative Text</h2>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-3">Understand the foundational mechanics of LLMs and how they map language into fluid semantic spaces. A primer for humanists stepping into tech.</p>
+</div>
+<footer class="mt-auto">
+<button class="w-full liquid-button rounded-lg py-3 font-body-md text-body-md text-on-surface flex justify-center items-center gap-2">
+                        Start Learning <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</footer>
+</article>
+<!-- Card 2 -->
+<article class="glass-card rounded-xl p-glass-padding flex flex-col gap-6 relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+<header class="flex justify-between items-start">
+<span class="font-label-caps text-label-caps text-secondary px-3 py-1 rounded-full bg-secondary-container/30 border border-secondary/20">社会学</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">signal_cellular_alt_2_bar</span> Medium
+                    </span>
+</header>
+<div class="flex-grow">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-3 group-hover:text-primary transition-colors">Digital Ethnography in AI Communities</h2>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-3">Methods for observing and understanding the emergent social behaviors within agent-driven environments. Bridging observational science and code.</p>
+</div>
+<footer class="mt-auto">
+<button class="w-full liquid-button rounded-lg py-3 font-body-md text-body-md text-on-surface flex justify-center items-center gap-2">
+                        Start Learning <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</footer>
+</article>
+<!-- Card 3 -->
+<article class="glass-card rounded-xl p-glass-padding flex flex-col gap-6 relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+<header class="flex justify-between items-start">
+<span class="font-label-caps text-label-caps text-primary px-3 py-1 rounded-full bg-primary-container/10 border border-primary/20">AGENT</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">signal_cellular_alt</span> Advanced
+                    </span>
+</header>
+<div class="flex-grow">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-3 group-hover:text-primary transition-colors">Orchestrating Multi-Agent Workflows</h2>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-3">Design complex systems where specialized AI agents collaborate to solve wicked problems. Requires prior knowledge of API orchestration.</p>
+</div>
+<footer class="mt-auto">
+<button class="w-full liquid-button rounded-lg py-3 font-body-md text-body-md text-on-surface flex justify-center items-center gap-2">
+                        Start Learning <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</footer>
+</article>
+<!-- Card 4 -->
+<article class="glass-card rounded-xl p-glass-padding flex flex-col gap-6 relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+<header class="flex justify-between items-start">
+<span class="font-label-caps text-label-caps text-tertiary px-3 py-1 rounded-full bg-tertiary-fixed/50 border border-tertiary/20">设计</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">signal_cellular_alt_1_bar</span> Entry
+                    </span>
+</header>
+<div class="flex-grow">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-3 group-hover:text-primary transition-colors">Liquid UI: Prototyping Glassmorphism</h2>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-3">A hands-on guide to creating interfaces that feel alive, utilizing backdrop filters, caustic lighting effects, and semantic token systems.</p>
+</div>
+<footer class="mt-auto">
+<button class="w-full liquid-button rounded-lg py-3 font-body-md text-body-md text-on-surface flex justify-center items-center gap-2">
+                        Start Learning <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</footer>
+</article>
+<!-- Card 5 -->
+<article class="glass-card rounded-xl p-glass-padding flex flex-col gap-6 relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+<header class="flex justify-between items-start">
+<span class="font-label-caps text-label-caps text-primary px-3 py-1 rounded-full bg-primary-container/10 border border-primary/20">工程</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">signal_cellular_alt_2_bar</span> Medium
+                    </span>
+</header>
+<div class="flex-grow">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-3 group-hover:text-primary transition-colors">Deploying Models to the Edge</h2>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-3">Learn to optimize and ship small, efficient models that run directly on user devices, ensuring privacy and reducing latency.</p>
+</div>
+<footer class="mt-auto">
+<button class="w-full liquid-button rounded-lg py-3 font-body-md text-body-md text-on-surface flex justify-center items-center gap-2">
+                        Start Learning <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</footer>
+</article>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full border-t border-slate-200/50 dark:border-slate-800/50 bg-slate-50/50 dark:bg-slate-950/50 backdrop-blur-xl border-t border-white/10">
+<div class="flex flex-col md:flex-row justify-between items-center py-12 px-8 max-w-7xl mx-auto gap-6">
+<div class="text-lg font-semibold text-slate-800 dark:text-slate-200 font-serif text-sm">© 2026 Kezhongke Humanistic Tech. All rights reserved.</div>
+<div class="flex gap-6">
+<a class="text-slate-500 dark:text-slate-400 font-serif text-sm hover:text-orange-500 transition-colors opacity-80 hover:opacity-100" href="#">Privacy Policy</a>
+<a class="text-slate-500 dark:text-slate-400 font-serif text-sm hover:text-orange-500 transition-colors opacity-80 hover:opacity-100" href="#">Terms of Service</a>
+<a class="text-slate-500 dark:text-slate-400 font-serif text-sm hover:text-orange-500 transition-colors opacity-80 hover:opacity-100" href="#">Contact</a>
+<a class="text-slate-500 dark:text-slate-400 font-serif text-sm hover:text-orange-500 transition-colors opacity-80 hover:opacity-100" href="#">System Status</a>
+</div>
+</div>
+</footer>
+</body></html>

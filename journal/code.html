@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kezhongke Journal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Source+Han+Serif+SC:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed": "#e4dfff",
+                      "secondary-container": "#c0ecdc",
+                      "on-primary-fixed-variant": "#8b1a00",
+                      "surface-container-lowest": "#ffffff",
+                      "primary-container": "#cf4425",
+                      "surface-container": "#ffe9e4",
+                      "surface": "#fff8f6",
+                      "on-surface": "#261815",
+                      "primary-fixed-dim": "#ffb4a3",
+                      "background": "#fff8f6",
+                      "on-primary-container": "#fffbff",
+                      "error-container": "#ffdad6",
+                      "on-error-container": "#93000a",
+                      "secondary-fixed-dim": "#a5d0c0",
+                      "on-background": "#261815",
+                      "primary-fixed": "#ffdad2",
+                      "secondary": "#3e6659",
+                      "on-error": "#ffffff",
+                      "on-tertiary-fixed-variant": "#464361",
+                      "inverse-on-surface": "#ffede9",
+                      "on-surface-variant": "#5a413b",
+                      "on-tertiary-fixed": "#1b1833",
+                      "secondary-fixed": "#c0ecdc",
+                      "surface-container-low": "#fff0ed",
+                      "inverse-surface": "#3c2d29",
+                      "inverse-primary": "#ffb4a3",
+                      "surface-tint": "#b02e10",
+                      "surface-container-high": "#fde2dd",
+                      "on-secondary-container": "#446c5f",
+                      "surface-dim": "#eed4cf",
+                      "tertiary-container": "#747191",
+                      "on-secondary": "#ffffff",
+                      "outline-variant": "#e2bfb7",
+                      "surface-bright": "#fff8f6",
+                      "primary": "#ad2c0d",
+                      "on-primary-fixed": "#3d0600",
+                      "on-tertiary": "#ffffff",
+                      "on-primary": "#ffffff",
+                      "tertiary": "#5c5977",
+                      "on-tertiary-container": "#fffbff",
+                      "tertiary-fixed-dim": "#c7c2e6",
+                      "error": "#ba1a1a",
+                      "on-secondary-fixed-variant": "#264e42",
+                      "outline": "#8e706a",
+                      "on-secondary-fixed": "#002018",
+                      "surface-variant": "#f7ddd7",
+                      "surface-container-highest": "#f7ddd7"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "glass-padding": "32px",
+                      "margin-desktop": "64px",
+                      "margin-mobile": "20px",
+                      "unit": "8px",
+                      "gutter": "24px",
+                      "container-max": "1280px"
+              },
+              "fontFamily": {
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "label-caps": [
+                              "Inter"
+                      ],
+                      "display-hero": [
+                              "Source Han Serif SC"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Source Han Serif SC"
+                      ],
+                      "headline-lg": [
+                              "Source Han Serif SC"
+                      ]
+              },
+              "fontSize": {
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.1em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-hero": [
+                              "64px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "28px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg": [
+                              "40px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        .liquid-glass-bg {
+            background: radial-gradient(circle at 50% 0%, #c0ecdc33 0%, transparent 50%),
+                        radial-gradient(circle at 100% 100%, #ffdad233 0%, transparent 50%);
+            background-color: #fff8f6;
+            background-attachment: fixed;
+        }
+        .glass-card {
+            background-color: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(40px) saturate(180%);
+            -webkit-backdrop-filter: blur(40px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 8px 32px 0 rgba(217, 75, 43, 0.05);
+        }
+        .liquid-button {
+            background: linear-gradient(135deg, #ad2c0d 0%, #cf4425 100%);
+            box-shadow: 0 4px 15px rgba(173, 44, 13, 0.2);
+            transition: all 0.3s ease;
+        }
+        .liquid-button:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(173, 44, 13, 0.3);
+        }
+        .glass-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(142, 112, 106, 0.2), transparent);
+        }
+    </style>
+</head>
+<body class="liquid-glass-bg text-on-background min-h-screen font-body-md text-body-md">
+<!-- TopNavBar -->
+<nav class="fixed top-4 inset-x-4 z-50">
+<div class="bg-white/30 dark:bg-black/30 backdrop-blur-[40px] saturate-[180%] rounded-2xl border border-white/20 dark:border-white/10 shadow-[0_8px_32px_0_rgba(217,75,43,0.1)] flex justify-between items-center w-full max-w-7xl mx-auto px-6 h-16">
+<div class="flex items-center gap-4">
+<span class="text-2xl font-bold text-orange-600 dark:text-orange-500 font-serif antialiased tracking-tight">Kezhongke</span>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-slate-600 dark:text-slate-300 hover:bg-white/40 dark:hover:bg-white/10 transition-all duration-300 px-3 py-2 rounded-lg" href="#">Solutions</a>
+<a class="text-orange-600 dark:text-orange-400 border-b-2 border-orange-600 pb-1 hover:bg-white/40 dark:hover:bg-white/10 transition-all duration-300 px-3 py-2 rounded-lg" href="#">Research</a>
+<a class="text-slate-600 dark:text-slate-300 hover:bg-white/40 dark:hover:bg-white/10 transition-all duration-300 px-3 py-2 rounded-lg" href="#">Case Studies</a>
+<a class="text-slate-600 dark:text-slate-300 hover:bg-white/40 dark:hover:bg-white/10 transition-all duration-300 px-3 py-2 rounded-lg" href="#">About</a>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-slate-600">search</span>
+<button class="liquid-button text-on-primary px-6 py-2 rounded-full font-label-caps text-label-caps">Connect</button>
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="pt-[120px] pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+<!-- Header -->
+<header class="mb-16 text-center">
+<h1 class="font-display-hero text-display-hero text-on-background mb-4">刊物 Journal</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">Exploring the intersection of humanistic heritage and cutting-edge technology.</p>
+</header>
+<!-- Featured Article -->
+<section class="mb-24">
+<div class="glass-card rounded-3xl overflow-hidden flex flex-col md:flex-row group cursor-pointer">
+<div class="w-full md:w-1/2 p-10 flex flex-col justify-center">
+<span class="font-label-caps text-label-caps text-primary mb-4 tracking-widest">FEATURED ESSAY</span>
+<h2 class="font-headline-lg text-headline-lg text-on-background mb-6 group-hover:text-primary transition-colors">The Liquid Glass Architecture: Designing for Fluid Minds</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-8 line-clamp-3">A deep dive into how transparent interfaces and soft caustics affect cognitive load, drawing parallels from traditional Chinese water gardens and modern spatial computing.</p>
+<div class="flex items-center gap-4 mt-auto">
+<div class="w-10 h-10 rounded-full bg-surface-variant overflow-hidden border border-outline-variant">
+<img alt="A cute, minimalist 3D cartoon hermit crab mascot for an AI community called 'Kezhongke'. The style is Apple-inspired, smooth liquid textures, semi-transparent glossy shell, friendly eyes, soft pastel colors (warm white and soft amber). It should look high-end, friendly, and tech-humanistic. Isolated on a white background." class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWm8cgFtL_j5NyAG3gaFDr19zW0yDUyjJquf2TuZc1OKgEGZurvRoRQQfo-Bc-mqEo525bmTm49wkuKFk-W80Iw3ctSezVkr0MIaHwhn3Q3llXe-f9WFCrzqlnfGwtoy8XC8ljLVvFnkSBHcz0eSFESJfO53wVWfG9mqlMq_fNpBBgRi8D36fq-ilX4uaRMHlLMw7AVgHVC0AfoBNZmMyxoggBEt7F7Vi9dIjyJzVPy2ttlquHq5dKcmf5gYnfNjHLdJH0kstohjw"/>
+</div>
+<div>
+<p class="font-label-caps text-label-caps text-on-background">Dr. Wei Chen</p>
+<p class="text-sm text-on-surface-variant">Oct 12, 2026 • 12 min read</p>
+</div>
+</div>
+</div>
+<div class="w-full md:w-1/2 h-64 md:h-auto bg-surface-container relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-tertiary-fixed/40 to-secondary-container/40"></div>
+<!-- Placeholder for actual article image, using gradient for now to fit the glass theme without extra assets if not provided, but we can use the mascot subtly if needed, or leave it as abstract liquid art -->
+<div class="absolute inset-0 opacity-50 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxsaW5lYXJHcmFkaWVudCBpZD0iZyIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2NmNDQyNSIgc3RvcC1vcGFjaXR5PSIwLjEiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNjMGVjZGMiIHN0b3Atb3BhY2l0eT0iMC4yIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNnKSIvPjwvc3ZnPg==')] mix-blend-overlay"></div>
+</div>
+</div>
+</section>
+<!-- Article List -->
+<section class="max-w-4xl mx-auto space-y-12">
+<!-- Article Item 1 -->
+<article class="group relative">
+<div class="flex flex-col md:flex-row gap-8 items-baseline">
+<div class="w-full md:w-1/4 pt-2">
+<span class="font-label-caps text-label-caps text-tertiary tracking-wider block mb-2">RESEARCH</span>
+<time class="text-sm text-on-surface-variant">Oct 05, 2026</time>
+</div>
+<div class="w-full md:w-3/4">
+<h3 class="font-headline-md text-headline-md text-on-background mb-4 group-hover:text-primary transition-colors cursor-pointer">Semantic Shells in Modern AI Interfaces</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">Investigating the psychological boundaries created by navigation clusters and how contextual suppression improves focus state retention.</p>
+<div class="flex items-center gap-4">
+<span class="font-label-caps text-label-caps text-on-background">Elena Rostova</span>
+<span class="text-sm text-outline">•</span>
+<span class="text-sm text-on-surface-variant">8 min read</span>
+</div>
+</div>
+</div>
+</article>
+<div class="glass-divider"></div>
+<!-- Article Item 2 -->
+<article class="group relative">
+<div class="flex flex-col md:flex-row gap-8 items-baseline">
+<div class="w-full md:w-1/4 pt-2">
+<span class="font-label-caps text-label-caps text-tertiary tracking-wider block mb-2">CASE STUDY</span>
+<time class="text-sm text-on-surface-variant">Sep 28, 2026</time>
+</div>
+<div class="w-full md:w-3/4">
+<h3 class="font-headline-md text-headline-md text-on-background mb-4 group-hover:text-primary transition-colors cursor-pointer">Harmonizing Heritage: Typography in Digital Spaces</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">A practical look at integrating Source Han Serif SC within fluid grid systems to maintain scholarly gravity without sacrificing modern legibility.</p>
+<div class="flex items-center gap-4">
+<span class="font-label-caps text-label-caps text-on-background">Liu Yang</span>
+<span class="text-sm text-outline">•</span>
+<span class="text-sm text-on-surface-variant">15 min read</span>
+</div>
+</div>
+</div>
+</article>
+<div class="glass-divider"></div>
+<!-- Article Item 3 -->
+<article class="group relative">
+<div class="flex flex-col md:flex-row gap-8 items-baseline">
+<div class="w-full md:w-1/4 pt-2">
+<span class="font-label-caps text-label-caps text-tertiary tracking-wider block mb-2">PHILOSOPHY</span>
+<time class="text-sm text-on-surface-variant">Sep 15, 2026</time>
+</div>
+<div class="w-full md:w-3/4">
+<h3 class="font-headline-md text-headline-md text-on-background mb-4 group-hover:text-primary transition-colors cursor-pointer">The Ethics of Invisible Interfaces</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">When technology becomes entirely ambient and interfaces disappear into "liquid glass," where do we draw the line between seamless utility and loss of agency?</p>
+<div class="flex items-center gap-4">
+<span class="font-label-caps text-label-caps text-on-background">Dr. Wei Chen</span>
+<span class="text-sm text-outline">•</span>
+<span class="text-sm text-on-surface-variant">10 min read</span>
+</div>
+</div>
+</div>
+</article>
+<div class="mt-16 text-center">
+<button class="px-8 py-3 rounded-full border border-primary/30 text-primary hover:bg-primary/5 transition-colors font-label-caps text-label-caps tracking-widest">LOAD MORE</button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="mt-auto w-full border-t border-slate-200/50 dark:border-slate-800/50 bg-slate-50/50 dark:bg-slate-950/50 backdrop-blur-xl">
+<div class="flex flex-col md:flex-row justify-between items-center py-12 px-8 max-w-7xl mx-auto gap-6 font-serif text-sm border-t border-white/10">
+<div class="text-lg font-semibold text-slate-800 dark:text-slate-200">
+                Kezhongke
+            </div>
+<div class="flex flex-wrap justify-center gap-6 text-slate-500 dark:text-slate-400">
+<a class="hover:text-orange-500 transition-colors opacity-80 hover:opacity-100" href="#">Privacy Policy</a>
+<a class="hover:text-orange-500 transition-colors opacity-80 hover:opacity-100" href="#">Terms of Service</a>
+<a class="hover:text-orange-500 transition-colors opacity-80 hover:opacity-100" href="#">Contact</a>
+<a class="hover:text-orange-500 transition-colors opacity-80 hover:opacity-100" href="#">System Status</a>
+</div>
+<div class="text-slate-500 dark:text-slate-400">
+                © 2026 Kezhongke Humanistic Tech. All rights reserved.
+            </div>
+</div>
+</footer>
+</body></html>

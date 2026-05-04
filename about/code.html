@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>关于我们 About - Kezhongke</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Noto+Serif+SC:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed": "#e4dfff",
+                    "secondary-container": "#c0ecdc",
+                    "on-primary-fixed-variant": "#8b1a00",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-container": "#cf4425",
+                    "surface-container": "#ffe9e4",
+                    "surface": "#fff8f6",
+                    "on-surface": "#261815",
+                    "primary-fixed-dim": "#ffb4a3",
+                    "background": "#fff8f6",
+                    "on-primary-container": "#fffbff",
+                    "error-container": "#ffdad6",
+                    "on-error-container": "#93000a",
+                    "secondary-fixed-dim": "#a5d0c0",
+                    "on-background": "#261815",
+                    "primary-fixed": "#ffdad2",
+                    "secondary": "#3e6659",
+                    "on-error": "#ffffff",
+                    "on-tertiary-fixed-variant": "#464361",
+                    "inverse-on-surface": "#ffede9",
+                    "on-surface-variant": "#5a413b",
+                    "on-tertiary-fixed": "#1b1833",
+                    "secondary-fixed": "#c0ecdc",
+                    "surface-container-low": "#fff0ed",
+                    "inverse-surface": "#3c2d29",
+                    "inverse-primary": "#ffb4a3",
+                    "surface-tint": "#b02e10",
+                    "surface-container-high": "#fde2dd",
+                    "on-secondary-container": "#446c5f",
+                    "surface-dim": "#eed4cf",
+                    "tertiary-container": "#747191",
+                    "on-secondary": "#ffffff",
+                    "outline-variant": "#e2bfb7",
+                    "surface-bright": "#fff8f6",
+                    "primary": "#ad2c0d",
+                    "on-primary-fixed": "#3d0600",
+                    "on-tertiary": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "tertiary": "#5c5977",
+                    "on-tertiary-container": "#fffbff",
+                    "tertiary-fixed-dim": "#c7c2e6",
+                    "error": "#ba1a1a",
+                    "on-secondary-fixed-variant": "#264e42",
+                    "outline": "#8e706a",
+                    "on-secondary-fixed": "#002018",
+                    "surface-variant": "#f7ddd7",
+                    "surface-container-highest": "#f7ddd7"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "glass-padding": "32px",
+                    "margin-desktop": "64px",
+                    "margin-mobile": "20px",
+                    "unit": "8px",
+                    "gutter": "24px",
+                    "container-max": "1280px"
+            },
+            "fontFamily": {
+                    "body-md": [
+                            "Inter"
+                    ],
+                    "label-caps": [
+                            "Inter"
+                    ],
+                    "display-hero": [
+                            "'Noto Serif SC'"
+                    ],
+                    "body-lg": [
+                            "Inter"
+                    ],
+                    "headline-md": [
+                            "'Noto Serif SC'"
+                    ],
+                    "headline-lg": [
+                            "'Noto Serif SC'"
+                    ]
+            },
+            "fontSize": {
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "1.6",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "label-caps": [
+                            "12px",
+                            {
+                                    "lineHeight": "1",
+                                    "letterSpacing": "0.1em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "display-hero": [
+                            "64px",
+                            {
+                                    "lineHeight": "1.1",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "body-lg": [
+                            "18px",
+                            {
+                                    "lineHeight": "1.6",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-md": [
+                            "28px",
+                            {
+                                    "lineHeight": "1.3",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-lg": [
+                            "40px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "600"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<style>
+        .glass-card {
+            background-color: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(40px) saturate(180%);
+            -webkit-backdrop-filter: blur(40px) saturate(180%);
+            border: 1px solid transparent;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.1));
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+            box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.2), 0 8px 32px 0 rgba(217, 75, 43, 0.05);
+        }
+        .caustic-bg {
+            background: linear-gradient(135deg, rgba(192, 236, 220, 0.3) 0%, rgba(228, 223, 255, 0.3) 100%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen relative overflow-x-hidden">
+<!-- Caustic Background Base -->
+<div class="fixed inset-0 z-[-1] caustic-bg mix-blend-multiply opacity-50"></div>
+<div class="fixed top-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-secondary-container opacity-20 blur-[100px] z-[-1]"></div>
+<div class="fixed bottom-[-10%] right-[-10%] w-[40vw] h-[40vw] rounded-full bg-tertiary-fixed opacity-20 blur-[100px] z-[-1]"></div>
+<!-- TopNavBar -->
+<nav class="fixed top-4 inset-x-4 rounded-2xl border border-white/20 bg-white/30 backdrop-blur-[40px] saturate-[180%] shadow-[0_8px_32px_0_rgba(217,75,43,0.1)] z-50">
+<div class="flex justify-between items-center w-full max-w-7xl mx-auto px-6 h-16">
+<div class="text-2xl font-bold text-primary tracking-tight font-headline-md">
+                Kezhongke
+            </div>
+<div class="hidden md:flex gap-8 items-center"><a class="text-slate-600 font-body-md hover:bg-white/40 transition-all duration-300 px-3 py-1 rounded-lg" href="#">解决方案 Solutions</a>
+<a class="text-slate-600 font-body-md hover:bg-white/40 transition-all duration-300 px-3 py-1 rounded-lg" href="#">研究 Research</a>
+<a class="text-slate-600 font-body-md hover:bg-white/40 transition-all duration-300 px-3 py-1 rounded-lg" href="#">案例研究 Case Studies</a>
+<a class="text-primary border-b-2 border-primary pb-1 font-body-md" href="#">关于我们 About</a></div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer hover:bg-white/40 p-2 rounded-full transition-all">search</span>
+<button class="bg-primary-container text-on-primary-container px-4 py-2 rounded-full font-body-md hover:scale-105 transition-transform shadow-[0_4px_12px_rgba(207,68,37,0.2)]">Connect</button>
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="pt-[120px] pb-24 px-6 md:px-margin-desktop max-w-container-max mx-auto">
+<!-- Hero Section -->
+<header class="mb-24 text-center">
+<h1 class="font-display-hero text-display-hero text-on-background mb-4">关于我们 <span class="text-primary opacity-80">About</span></h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">通过保护壳的视角，探索人文遗产与技术创新的交汇点。</p>
+</header>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Mascot / Concept (Large Left) -->
+<div class="md:col-span-8 glass-card rounded-[32px] p-glass-padding flex flex-col md:flex-row items-center gap-8 relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-br from-primary-fixed-dim/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+<div class="flex-1 z-10">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-4">品牌说明</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 leading-relaxed">
+                        The name "Kezhongke" embodies the philosophy of the hermit crab finding its perfect shell. In a rapidly evolving digital landscape, we provide the architectural and conceptual "shells" that protect and nurture human-centric AI initiatives.
+                    </p>
+<div class="inline-flex items-center gap-2 text-primary-container font-label-caps text-label-caps uppercase tracking-widest"><span class="material-symbols-outlined text-[18px]">explore</span>我们的吉祥物哲学</div>
+</div>
+<div class="w-full md:w-1/2 flex justify-center relative z-10">
+<div class="relative w-[300px] h-[300px] rounded-full bg-white/50 backdrop-blur-md shadow-2xl overflow-hidden border border-white/40 flex items-center justify-center p-8 transition-transform duration-500 hover:scale-105">
+<img alt="A cute, minimalist 3D cartoon hermit crab mascot for an AI community called 'Kezhongke'. The style is Apple-inspired, smooth liquid textures, semi-transparent glossy shell, friendly eyes, soft pastel colors (warm white and soft amber). It should look high-end, friendly, and tech-humanistic. Isolated on a white background." class="w-full h-full object-contain mix-blend-multiply" data-alt="A highly detailed 3D render of a minimalist hermit crab mascot. The crab features a semi-transparent glossy shell with smooth, liquid glass textures. It sits on a pristine white surface under soft, diffused studio lighting that creates a high-end Apple-inspired aesthetic. The color palette emphasizes warm whites and soft ambers, reflecting a friendly, tech-humanistic mood. The overall composition is clean and modern." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWm8cgFtL_j5NyAG3gaFDr19zW0yDUyjJquf2TuZc1OKgEGZurvRoRQQfo-Bc-mqEo525bmTm49wkuKFk-W80Iw3ctSezVkr0MIaHwhn3Q3llXe-f9WFCrzqlnfGwtoy8XC8ljLVvFnkSBHcz0eSFESJfO53wVWfG9mqlMq_fNpBBgRi8D36fq-ilX4uaRMHlLMw7AVgHVC0AfoBNZmMyxoggBEt7F7Vi9dIjyJzVPy2ttlquHq5dKcmf5gYnfNjHLdJH0kstohjw"/>
+</div>
+</div>
+</div>
+<!-- Core Philosophy (Top Right) -->
+<div class="md:col-span-4 glass-card rounded-[32px] p-glass-padding flex flex-col justify-center relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-secondary-container/30 rounded-bl-full blur-2xl"></div>
+<span class="material-symbols-outlined text-[40px] text-secondary mb-4" style="font-variation-settings: 'FILL' 1;">psychology</span>
+<h3 class="font-headline-md text-headline-md text-on-background mb-3">核心理念</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                    We believe technology should adapt to humanity, not the other way around. Our core philosophy centers on creating interfaces and systems that feel as natural and organic as a physical material.
+                </p>
+</div>
+<!-- Current Focus (Bottom Full Width) -->
+<div class="md:col-span-12 glass-card rounded-[32px] p-glass-padding mt-8">
+<div class="flex flex-col md:flex-row items-center justify-between gap-12">
+<div class="flex-1">
+<h3 class="font-headline-md text-headline-md text-primary mb-6">当前关注方向</h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+<div class="bg-surface-container-lowest/50 rounded-2xl p-6 border border-white/20 shadow-sm hover:shadow-md transition-shadow">
+<span class="material-symbols-outlined text-primary-container mb-2">water_drop</span>
+<h4 class="font-label-caps text-label-caps text-on-background mb-2">Liquid Interfaces</h4>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">Developing fluid UI patterns that blur the line between software and physical material.</p>
+</div>
+<div class="bg-surface-container-lowest/50 rounded-2xl p-6 border border-white/20 shadow-sm hover:shadow-md transition-shadow">
+<span class="material-symbols-outlined text-secondary mb-2">nature_people</span>
+<h4 class="font-label-caps text-label-caps text-on-background mb-2">Humanistic AI</h4>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">Aligning machine learning models with traditional ethical frameworks and human well-being.</p>
+</div>
+</div>
+</div>
+<!-- CTA Card within Focus Section -->
+<div class="w-full md:w-[350px] bg-primary-container/10 border border-primary/20 rounded-[24px] p-8 text-center backdrop-blur-xl relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-b from-transparent to-primary/5 opacity-50"></div>
+<h4 class="font-headline-md text-headline-md text-primary-container mb-4 relative z-10">加入我们</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 relative z-10">与我们联系，探索合作机会或加入我们的社区。</p>
+<button class="w-full bg-primary text-on-primary py-3 rounded-xl font-body-lg text-body-lg hover:scale-[1.02] transition-transform duration-300 shadow-[0_4px_16px_rgba(173,44,13,0.3)] relative z-10 flex justify-center items-center gap-2">
+<span>建立联系</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full border-t border-white/10 bg-slate-50/50 backdrop-blur-xl mt-12">
+<div class="flex flex-col md:flex-row justify-between items-center py-12 px-8 max-w-7xl mx-auto gap-6">
+<div class="text-lg font-semibold text-slate-800 font-headline-md">
+                Kezhongke
+            </div>
+<div class="flex flex-wrap justify-center gap-6"><a class="font-serif text-sm text-slate-500 hover:text-orange-500 transition-colors opacity-80 hover:opacity-100" href="#">隐私政策</a>
+<a class="font-serif text-sm text-slate-500 hover:text-orange-500 transition-colors opacity-80 hover:opacity-100" href="#">服务条款</a>
+<a class="font-serif text-sm text-slate-500 hover:text-orange-500 transition-colors opacity-80 hover:opacity-100" href="#">联系我们</a>
+<a class="font-serif text-sm text-slate-500 hover:text-orange-500 transition-colors opacity-80 hover:opacity-100" href="#">系统状态</a></div>
+<div class="font-serif text-sm text-slate-500">
+                © 2026 Kezhongke Humanistic Tech. All rights reserved.
+            </div>
+</div>
+</footer>
+</body></html>

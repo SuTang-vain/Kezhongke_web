@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html class="light" lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kezhongke</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Source+Han+Serif+SC:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                            "tertiary-fixed": "#e4dfff",
+                            "secondary-container": "#c0ecdc",
+                            "on-primary-fixed-variant": "#8b1a00",
+                            "surface-container-lowest": "#ffffff",
+                            "primary-container": "#cf4425",
+                            "surface-container": "#ffe9e4",
+                            "surface": "#fff8f6",
+                            "on-surface": "#261815",
+                            "primary-fixed-dim": "#ffb4a3",
+                            "background": "#fff8f6",
+                            "on-primary-container": "#fffbff",
+                            "error-container": "#ffdad6",
+                            "on-error-container": "#93000a",
+                            "secondary-fixed-dim": "#a5d0c0",
+                            "on-background": "#261815",
+                            "primary-fixed": "#ffdad2",
+                            "secondary": "#3e6659",
+                            "on-error": "#ffffff",
+                            "on-tertiary-fixed-variant": "#464361",
+                            "inverse-on-surface": "#ffede9",
+                            "on-surface-variant": "#5a413b",
+                            "on-tertiary-fixed": "#1b1833",
+                            "secondary-fixed": "#c0ecdc",
+                            "surface-container-low": "#fff0ed",
+                            "inverse-surface": "#3c2d29",
+                            "inverse-primary": "#ffb4a3",
+                            "surface-tint": "#b02e10",
+                            "surface-container-high": "#fde2dd",
+                            "on-secondary-container": "#446c5f",
+                            "surface-dim": "#eed4cf",
+                            "tertiary-container": "#747191",
+                            "on-secondary": "#ffffff",
+                            "outline-variant": "#e2bfb7",
+                            "surface-bright": "#fff8f6",
+                            "primary": "#ad2c0d",
+                            "on-primary-fixed": "#3d0600",
+                            "on-tertiary": "#ffffff",
+                            "on-primary": "#ffffff",
+                            "tertiary": "#5c5977",
+                            "on-tertiary-container": "#fffbff",
+                            "tertiary-fixed-dim": "#c7c2e6",
+                            "error": "#ba1a1a",
+                            "on-secondary-fixed-variant": "#264e42",
+                            "outline": "#8e706a",
+                            "on-secondary-fixed": "#002018",
+                            "surface-variant": "#f7ddd7",
+                            "surface-container-highest": "#f7ddd7"
+                    },
+                    "borderRadius": {
+                            "DEFAULT": "0.25rem",
+                            "lg": "0.5rem",
+                            "xl": "0.75rem",
+                            "full": "9999px"
+                    },
+                    "spacing": {
+                            "glass-padding": "32px",
+                            "margin-desktop": "64px",
+                            "margin-mobile": "20px",
+                            "unit": "8px",
+                            "gutter": "24px",
+                            "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                            "body-md": [
+                                    "Inter"
+                            ],
+                            "label-caps": [
+                                    "Inter"
+                            ],
+                            "display-hero": [
+                                    "Source Han Serif SC"
+                            ],
+                            "body-lg": [
+                                    "Inter"
+                            ],
+                            "headline-md": [
+                                    "Source Han Serif SC"
+                            ],
+                            "headline-lg": [
+                                    "Source Han Serif SC"
+                            ]
+                    },
+                    "fontSize": {
+                            "body-md": [
+                                    "16px",
+                                    {
+                                            "lineHeight": "1.6",
+                                            "fontWeight": "400"
+                                    }
+                            ],
+                            "label-caps": [
+                                    "12px",
+                                    {
+                                            "lineHeight": "1",
+                                            "letterSpacing": "0.1em",
+                                            "fontWeight": "600"
+                                    }
+                            ],
+                            "display-hero": [
+                                    "64px",
+                                    {
+                                            "lineHeight": "1.1",
+                                            "letterSpacing": "-0.02em",
+                                            "fontWeight": "700"
+                                    }
+                            ],
+                            "body-lg": [
+                                    "18px",
+                                    {
+                                            "lineHeight": "1.6",
+                                            "fontWeight": "400"
+                                    }
+                            ],
+                            "headline-md": [
+                                    "28px",
+                                    {
+                                            "lineHeight": "1.3",
+                                            "fontWeight": "600"
+                                    }
+                            ],
+                            "headline-lg": [
+                                    "40px",
+                                    {
+                                            "lineHeight": "1.2",
+                                            "letterSpacing": "-0.01em",
+                                            "fontWeight": "600"
+                                    }
+                            ]
+                    }
+            },
+                },
+        }
+    </script>
+<style>
+        .liquid-glass {
+            backdrop-filter: blur(40px) saturate(180%);
+            -webkit-backdrop-filter: blur(40px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-bottom-color: rgba(255, 255, 255, 0.1);
+            border-right-color: rgba(255, 255, 255, 0.1);
+            box-shadow: inset 0 1px 1px rgba(255,255,255,0.4), inset 0 -1px 1px rgba(255,255,255,0.1), 0 8px 32px 0 rgba(217,75,43,0.05);
+        }
+        .liquid-bg {
+            background: radial-gradient(circle at 20% 30%, rgba(255,218,214,0.4) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 70%, rgba(192,236,220,0.3) 0%, transparent 50%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased relative min-h-screen overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container">
+<!-- Ambient Liquid Background -->
+<div class="fixed inset-0 pointer-events-none liquid-bg z-[-1]"></div>
+<!-- TopNavBar -->
+<nav class="fixed top-4 inset-x-4 rounded-2xl border border-white/20 dark:border-white/10 bg-white/30 dark:bg-black/30 backdrop-blur-[40px] saturate-[180%] shadow-[0_8px_32px_0_rgba(217,75,43,0.1)] z-50">
+<div class="flex justify-between items-center w-full max-w-7xl mx-auto px-6 h-16">
+<div class="text-2xl font-bold text-orange-600 dark:text-orange-500 font-serif antialiased tracking-tight">Kezhongke</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-slate-600 dark:text-slate-300 font-body-md text-body-md hover:bg-white/40 dark:hover:bg-white/10 transition-all duration-300 px-3 py-1 rounded-lg" href="#">解决方案 Solutions</a>
+<a class="text-slate-600 dark:text-slate-300 font-body-md text-body-md hover:bg-white/40 dark:hover:bg-white/10 transition-all duration-300 px-3 py-1 rounded-lg" href="#">前沿研究 Research</a>
+<a class="text-slate-600 dark:text-slate-300 font-body-md text-body-md hover:bg-white/40 dark:hover:bg-white/10 transition-all duration-300 px-3 py-1 rounded-lg" href="#">实践案例 Case Studies</a>
+<a class="text-slate-600 dark:text-slate-300 font-body-md text-body-md hover:bg-white/40 dark:hover:bg-white/10 transition-all duration-300 px-3 py-1 rounded-lg" href="#">关于我们 About</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 rounded-full liquid-glass flex items-center justify-center text-orange-600 dark:text-orange-400 hover:bg-white/40 dark:hover:bg-white/10 transition-all duration-300 Active: scale-95 transition-transform">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="bg-primary text-on-primary font-label-caps text-label-caps px-6 py-2 rounded-full hover:scale-[1.02] transition-transform duration-300 shadow-[0_4px_16px_rgba(173,44,13,0.2)]">即刻连接 Connect</button>
+</div>
+</div>
+</nav>
+<main class="pt-[120px] pb-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto space-y-32">
+<!-- Hero Section -->
+<section class="relative grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center min-h-[60vh]">
+<div class="lg:col-span-7 space-y-8 z-10">
+<h1 class="font-display-hero text-display-hero text-on-background leading-tight">
+                    在技术与文明之间，<br/>重建人的共鸣
+                </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+                    壳中客关注 AI、多智能体协作与人文技术实践。我们探索将尖端智能融入日常脉络，打造具有温度和生命力的数字栖息地。
+                </p>
+<div class="flex flex-wrap gap-4 pt-4">
+<button class="bg-primary text-on-primary font-body-md text-body-md px-8 py-3 rounded-full hover:scale-[1.02] transition-transform duration-300 shadow-[0_8px_24px_rgba(173,44,13,0.2)] relative overflow-hidden group">
+<div class="absolute inset-0 bg-white/20 blur-md transform -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+<span class="relative">进入生长体系</span>
+</button>
+<button class="liquid-glass text-primary font-body-md text-body-md px-8 py-3 rounded-full hover:bg-surface-container transition-colors duration-300">
+                        浏览共建工坊
+                    </button>
+</div>
+</div>
+<div class="lg:col-span-5 relative h-[500px] flex justify-center items-center">
+<div class="absolute inset-0 bg-primary-fixed/20 blur-3xl rounded-full scale-150 z-0"></div>
+<div class="relative z-10 w-full max-w-[400px] aspect-square liquid-glass rounded-3xl p-4 overflow-hidden flex items-center justify-center">
+<img alt="" class="w-full h-full object-cover rounded-2xl hover:scale-105 transition-transform duration-700" data-alt="A cute, minimalist 3D cartoon hermit crab mascot for an AI community called 'Kezhongke'. The style is Apple-inspired, smooth liquid textures, semi-transparent glossy shell, friendly eyes, soft pastel colors (warm white and soft amber). It should look high-end, friendly, and tech-humanistic. The mascot is sitting inside a glossy, frosted glass container, beautifully lit with caustic lighting effects reflecting off the liquid glass surface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWm8cgFtL_j5NyAG3gaFDr19zW0yDUyjJquf2TuZc1OKgEGZurvRoRQQfo-Bc-mqEo525bmTm49wkuKFk-W80Iw3ctSezVkr0MIaHwhn3Q3llXe-f9WFCrzqlnfGwtoy8XC8ljLVvFnkSBHcz0eSFESJfO53wVWfG9mqlMq_fNpBBgRi8D36fq-ilX4uaRMHlLMw7AVgHVC0AfoBNZmMyxoggBEt7F7Vi9dIjyJzVPy2ttlquHq5dKcmf5gYnfNjHLdJH0kstohjw"/>
+</div>
+</div>
+</section>
+<!-- Three Pillars Section -->
+<section class="space-y-12">
+<h2 class="font-headline-lg text-headline-lg text-center text-on-background">体系入口</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Card 1 -->
+<div class="liquid-glass p-glass-padding rounded-[2rem] flex flex-col gap-6 hover:-translate-y-2 transition-transform duration-500 cursor-pointer group">
+<div class="w-16 h-16 rounded-2xl bg-secondary-container/50 flex items-center justify-center">
+<span class="material-symbols-outlined text-[32px] text-on-secondary-container" style="font-variation-settings: 'FILL' 1;">psychiatry</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-background mb-2">生长 (Grow)</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">个人知识与能力的演进网络</p>
+</div>
+<div class="mt-auto pt-8 flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-primary tracking-widest uppercase">12个主题</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">arrow_forward</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="liquid-glass p-glass-padding rounded-[2rem] flex flex-col gap-6 hover:-translate-y-2 transition-transform duration-500 cursor-pointer group">
+<div class="w-16 h-16 rounded-2xl bg-tertiary-fixed/50 flex items-center justify-center">
+<span class="material-symbols-outlined text-[32px] text-on-tertiary-fixed" style="font-variation-settings: 'FILL' 1;">route</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-background mb-2">路径 (Path)</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">探索技术与人文结合的实践图谱</p>
+</div>
+<div class="mt-auto pt-8 flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-tertiary tracking-widest uppercase">8条脉络</span>
+<span class="material-symbols-outlined text-outline group-hover:text-tertiary transition-colors">arrow_forward</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="liquid-glass p-glass-padding rounded-[2rem] flex flex-col gap-6 hover:-translate-y-2 transition-transform duration-500 cursor-pointer group">
+<div class="w-16 h-16 rounded-2xl bg-primary-fixed/50 flex items-center justify-center">
+<span class="material-symbols-outlined text-[32px] text-on-primary-fixed" style="font-variation-settings: 'FILL' 1;">construction</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-background mb-2">工坊 (Atelier)</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">共同构建多智能体协作的实验场</p>
+</div>
+<div class="mt-auto pt-8 flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-primary tracking-widest uppercase">5个项目</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">arrow_forward</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Recent Updates -->
+<section class="space-y-12">
+<div class="flex justify-between items-end">
+<h2 class="font-headline-lg text-headline-lg text-on-background">最新洞察</h2>
+<button class="text-primary font-label-caps text-label-caps flex items-center gap-1 hover:underline">查看全部 <span class="material-symbols-outlined text-[16px]">arrow_forward</span></button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<article class="liquid-glass rounded-3xl overflow-hidden flex flex-col sm:flex-row group cursor-pointer">
+<div class="w-full sm:w-1/3 bg-surface-variant h-48 sm:h-auto relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-primary-container/20 to-secondary-container/20 mix-blend-overlay"></div>
+</div>
+<div class="p-8 sm:w-2/3 flex flex-col justify-center">
+<span class="font-label-caps text-label-caps text-outline mb-3">AI 协作 · 2026/04/12</span>
+<h4 class="font-headline-md text-[22px] leading-snug text-on-background mb-3 group-hover:text-primary transition-colors">多智能体网络中的信任重建机制</h4>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">在自主代理交互日益频繁的当下，如何在算法层面编织具备人文温度的信任契约。</p>
+</div>
+</article>
+<article class="liquid-glass rounded-3xl overflow-hidden flex flex-col sm:flex-row group cursor-pointer">
+<div class="w-full sm:w-1/3 bg-surface-variant h-48 sm:h-auto relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-tertiary-fixed/30 to-surface-container-high/30 mix-blend-overlay"></div>
+</div>
+<div class="p-8 sm:w-2/3 flex flex-col justify-center">
+<span class="font-label-caps text-label-caps text-outline mb-3">技术哲学 · 2026/04/05</span>
+<h4 class="font-headline-md text-[22px] leading-snug text-on-background mb-3 group-hover:text-primary transition-colors">液态玻璃视觉范式解析</h4>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">从高精度光学到有机流动性，探索下一代UI设计语言如何传递冷静而深刻的学术气质。</p>
+</div>
+</article>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full border-t border-slate-200/50 dark:border-slate-800/50 bg-slate-50/50 dark:bg-slate-950/50 backdrop-blur-xl">
+<div class="flex flex-col md:flex-row justify-between items-center py-12 px-8 max-w-7xl mx-auto gap-6 border-t border-white/10">
+<div class="text-lg font-semibold text-slate-800 dark:text-slate-200 font-serif text-sm opacity-80 hover:opacity-100">© 2026 壳中客 Kezhongke Humanistic Tech. 保留所有权利。</div>
+<div class="flex flex-wrap gap-6 items-center">
+<a class="text-slate-500 dark:text-slate-400 font-serif text-sm hover:text-orange-500 transition-colors opacity-80 hover:opacity-100" href="#">隐私政策 Privacy Policy</a>
+<a class="text-slate-500 dark:text-slate-400 font-serif text-sm hover:text-orange-500 transition-colors opacity-80 hover:opacity-100" href="#">服务条款 Terms of Service</a>
+<a class="text-slate-500 dark:text-slate-400 font-serif text-sm hover:text-orange-500 transition-colors opacity-80 hover:opacity-100" href="#">联系我们 Contact</a>
+<a class="text-slate-500 dark:text-slate-400 font-serif text-sm hover:text-orange-500 transition-colors opacity-80 hover:opacity-100" href="#">系统状态 System Status</a>
+</div>
+</div>
+</footer>
+</body></html>
