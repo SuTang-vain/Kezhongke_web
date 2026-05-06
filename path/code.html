@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html class="light" lang="zh-CN">
+<head>
+    <meta name="view-transition" content="same-origin" />
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Kezhongke - Path | 路径</title>
+    <link rel="icon" type="image/png" href="/kezhongke_logo/kezhongke_logo.png" />
+    <meta name="description" content="壳中客 Kezhongke - 在技术与文明之间，重建人的共鸣。关注 AI、多智能体协作与人文技术实践。" />
+    <meta name="keywords" content="壳中客, Kezhongke, AI, Agent, 人文技术, 设计系统, 智能协作" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Source+Han+Serif+SC:wght@600;700&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                            "tertiary-fixed": "#e4dfff",
+                            "secondary-container": "#c0ecdc",
+                            "on-primary-fixed-variant": "#8b1a00",
+                            "surface-container-lowest": "#ffffff",
+                            "primary-container": "#cf4425",
+                            "surface-container": "#ffe9e4",
+                            "surface": "#fff8f6",
+                            "on-surface": "#261815",
+                            "primary-fixed-dim": "#ffb4a3",
+                            "background": "#fff8f6",
+                            "on-primary-container": "#fffbff",
+                            "error-container": "#ffdad6",
+                            "on-error-container": "#93000a",
+                            "secondary-fixed-dim": "#a5d0c0",
+                            "on-background": "#261815",
+                            "primary-fixed": "#ffdad2",
+                            "secondary": "#3e6659",
+                            "on-error": "#ffffff",
+                            "on-tertiary-fixed-variant": "#464361",
+                            "inverse-on-surface": "#ffede9",
+                            "on-surface-variant": "#5a413b",
+                            "on-tertiary-fixed": "#1b1833",
+                            "secondary-fixed": "#c0ecdc",
+                            "surface-container-low": "#fff0ed",
+                            "inverse-surface": "#3c2d29",
+                            "inverse-primary": "#ffb4a3",
+                            "surface-tint": "#b02e10",
+                            "surface-container-high": "#fde2dd",
+                            "on-secondary-container": "#446c5f",
+                            "surface-dim": "#eed4cf",
+                            "tertiary-container": "#747191",
+                            "on-secondary": "#ffffff",
+                            "outline-variant": "#e2bfb7",
+                            "surface-bright": "#fff8f6",
+                            "primary": "#ad2c0d",
+                            "on-primary-fixed": "#3d0600",
+                            "on-tertiary": "#ffffff",
+                            "on-primary": "#ffffff",
+                            "tertiary": "#5c5977",
+                            "on-tertiary-container": "#fffbff",
+                            "tertiary-fixed-dim": "#c7c2e6",
+                            "error": "#ba1a1a",
+                            "on-secondary-fixed-variant": "#264e42",
+                            "outline": "#8e706a",
+                            "on-secondary-fixed": "#002018",
+                            "surface-variant": "#f7ddd7",
+                            "surface-container-highest": "#f7ddd7"
+                    },
+                    "borderRadius": {
+                            "DEFAULT": "0.25rem",
+                            "lg": "0.5rem",
+                            "xl": "0.75rem",
+                            "full": "9999px"
+                    },
+                    "spacing": {
+                            "glass-padding": "32px",
+                            "margin-desktop": "64px",
+                            "margin-mobile": "20px",
+                            "unit": "8px",
+                            "gutter": "24px",
+                            "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "display-hero": ["Source Han Serif SC"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Source Han Serif SC"],
+                        "headline-lg": ["Source Han Serif SC"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                        "display-hero": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-md": ["28px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "headline-lg": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        #liquid-canvas { position: fixed; inset: 0; z-index: -1; filter: blur(80px); opacity: 0.6; background-color: #fff8f6; }
+        ::view-transition-old(main-content) { animation: 400ms cubic-bezier(0.4, 0, 0.2, 1) both slide-out; }
+        ::view-transition-new(main-content) { animation: 400ms cubic-bezier(0.4, 0, 0.2, 1) both slide-in; }
+        @keyframes slide-out { from { transform: translateX(0); opacity: 1; } to { transform: translateX(-30px); opacity: 0; } }
+        @keyframes slide-in { from { transform: translateX(30px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        .liquid-glass {
+            backdrop-filter: blur(40px) saturate(180%);
+            -webkit-backdrop-filter: blur(40px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-bottom-color: rgba(255, 255, 255, 0.1);
+            border-right-color: rgba(255, 255, 255, 0.1);
+            box-shadow: inset 0 1px 1px rgba(255,255,255,0.4), inset 0 -1px 1px rgba(255,255,255,0.1), 0 8px 32px 0 rgba(217,75,43,0.05);
+            view-transition-name: top-nav;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased relative min-h-screen overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container">
+    <canvas id="liquid-canvas"></canvas>
+    <!-- Navigation -->
+    <nav class="fixed top-4 inset-x-4 rounded-2xl border border-white/20 dark:border-white/10 bg-white/30 dark:bg-black/30 backdrop-blur-[40px] saturate-[180%] shadow-[0_8px_32px_0_rgba(217,75,43,0.1)] z-50">
+        <div class="flex justify-between items-center w-full max-w-7xl mx-auto px-6 h-16">
+            <a href="/" class="text-2xl font-bold text-orange-600 dark:text-orange-500 font-serif antialiased tracking-tight">Kezhongke</a>
+            <div class="hidden md:flex items-center gap-6">
+                <a class="text-slate-600 dark:text-slate-300 font-body-md text-body-md hover:bg-white/40 dark:hover:bg-white/10 transition-all duration-300 px-3 py-1 rounded-lg" href="/">首页 Home</a>
+                <a class="text-slate-600 dark:text-slate-300 font-body-md text-body-md hover:bg-white/40 dark:hover:bg-white/10 transition-all duration-300 px-3 py-1 rounded-lg" href="/grow">成长 Grow</a>
+                <a class="text-orange-600 dark:text-orange-400 border-b-2 border-orange-600 pb-1 font-body-md text-body-md" href="/path">路径 Path</a>
+                <a class="text-slate-600 dark:text-slate-300 font-body-md text-body-md hover:bg-white/40 dark:hover:bg-white/10 transition-all duration-300 px-3 py-1 rounded-lg" href="/atelier">工坊 Atelier</a>
+                <a class="text-slate-600 dark:text-slate-300 font-body-md text-body-md hover:bg-white/40 dark:hover:bg-white/10 transition-all duration-300 px-3 py-1 rounded-lg" href="/journal">期刊 Journal</a>
+                <a class="text-slate-600 dark:text-slate-300 font-body-md text-body-md hover:bg-white/40 dark:hover:bg-white/10 transition-all duration-300 px-3 py-1 rounded-lg" href="/about">关于 About</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <button class="w-10 h-10 rounded-full liquid-glass flex items-center justify-center text-orange-600 dark:text-orange-400 hover:bg-white/40 dark:hover:bg-white/10 transition-all duration-300 Active: scale-95 transition-transform">
+                    <span class="material-symbols-outlined">search</span>
+                </button>
+                <button class="bg-primary text-on-primary font-label-caps text-label-caps px-6 py-2 rounded-full hover:scale-[1.02] transition-transform duration-300 shadow-[0_4px_16px_rgba(173,44,13,0.2)]">Connect</button>
+            </div>
+        </div>
+    </nav>
+
+    <main style="view-transition-name: main-content;" class="pt-[120px] pb-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto space-y-16">
+        <!-- Hero Section -->
+        <header class="max-w-3xl">
+            <h1 class="font-display-hero text-display-hero text-on-background mb-6">路径 Path</h1>
+            <p class="font-body-lg text-lg text-on-surface-variant">从学习者到贡献者，再到产业实践者的成长地图。我们记录每一个在技术与人文交汇处留下的印记。</p>
+        </header>
+
+        <!-- Pilot Projects -->
+        <section class="space-y-8">
+            <h2 class="font-headline-lg text-3xl">试点项目 Pilot Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="liquid-glass p-8 rounded-[2.5rem] space-y-4 group cursor-pointer hover:-translate-y-2 transition-all duration-500">
+                    <div class="aspect-video bg-surface-variant rounded-2xl overflow-hidden mb-4 relative">
+                        <div class="absolute inset-0 bg-gradient-to-br from-secondary-container/20 to-tertiary-fixed/20"></div>
+                    </div>
+                    <h3 class="font-headline-md text-2xl group-hover:text-primary transition-colors">AI 辅助人文田野调查工具集</h3>
+                    <p class="font-body-md text-on-surface-variant">利用多智能体协作简化社会学质性研究的编码与分析流程。</p>
+                    <div class="flex gap-2">
+                        <span class="px-3 py-1 rounded-full bg-secondary-container/30 text-xs">社会学</span>
+                        <span class="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs">活跃中</span>
+                    </div>
+                </div>
+                <div class="liquid-glass p-8 rounded-[2.5rem] space-y-4 group cursor-pointer hover:-translate-y-2 transition-all duration-500">
+                    <div class="aspect-video bg-surface-variant rounded-2xl overflow-hidden mb-4 relative">
+                        <div class="absolute inset-0 bg-gradient-to-br from-tertiary-fixed/40 to-primary/10"></div>
+                    </div>
+                    <h3 class="font-headline-md text-2xl group-hover:text-primary transition-colors">Liquid Glass 组件库开源计划</h3>
+                    <p class="font-body-md text-on-surface-variant">将“液态玻璃”美学沉淀为可复用的 Web 组件，助力人文技术实践。</p>
+                    <div class="flex gap-2">
+                        <span class="px-3 py-1 rounded-full bg-secondary-container/30 text-xs">设计系统</span>
+                        <span class="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs">招募中</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contributors -->
+        <section class="space-y-8">
+            <h2 class="font-headline-lg text-3xl">核心贡献者 Contributors</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                <!-- Sample Contributor -->
+                <div class="text-center space-y-3">
+                    <div class="w-20 h-20 mx-auto rounded-full liquid-glass flex items-center justify-center overflow-hidden">
+                        <span class="material-symbols-outlined text-3xl text-primary">person</span>
+                    </div>
+                    <div>
+                        <div class="font-bold">耀月</div>
+                        <div class="text-xs text-on-surface-variant uppercase tracking-wider">发起人 / 设计</div>
+                    </div>
+                </div>
+                <!-- Repeat placeholders -->
+                <div class="text-center space-y-3 opacity-50">
+                    <div class="w-20 h-20 mx-auto rounded-full border-2 border-dashed border-outline flex items-center justify-center">
+                        <span class="material-symbols-outlined text-3xl text-outline">add</span>
+                    </div>
+                    <div>
+                        <div class="font-bold">期待加入</div>
+                        <div class="text-xs">开发者 / 研究者</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="liquid-glass p-16 rounded-[3rem] text-center space-y-8">
+            <h2 class="text-4xl font-display-hero">开启您的路径</h2>
+            <p class="max-w-xl mx-auto font-body-lg text-on-surface-variant">无论是代码、设计还是深度思考，我们欢迎任何形式的人文技术贡献。</p>
+            <button class="bg-primary text-on-primary px-12 py-4 rounded-full font-bold hover:scale-105 transition-transform shadow-lg">提交贡献意向</button>
+        </section>
+    </main>
+
+    <footer class="w-full border-t border-slate-200/50 bg-slate-50/50 backdrop-blur-xl">
+        <div class="flex flex-col md:flex-row justify-between items-center py-12 px-8 max-w-7xl mx-auto gap-6">
+            <div class="text-sm font-semibold text-slate-500 font-serif opacity-80">© 2026 壳中客 Kezhongke Humanistic Tech. 保留所有权利。</div>
+            <div class="flex gap-6 items-center text-sm text-slate-500 font-serif">
+                <a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+                <a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+                <a class="hover:text-primary transition-colors" href="#">Contact</a>
+            </div>
+        </div>
+    </footer>
+<canvas id="liquid-canvas"></canvas>
+<script>
+    const canvas = document.getElementById('liquid-canvas');
+    if (canvas) {
+        const ctx = canvas.getContext('2d');
+        let points = [];
+        const numPoints = 8;
+        const colors = ['#ffdad2', '#c0ecdc', '#e4dfff', '#ffede9'];
+
+        function init() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            points = [];
+            for (let i = 0; i < numPoints; i++) {
+                points.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    vx: (Math.random() - 0.5) * 0.5,
+                    vy: (Math.random() - 0.5) * 0.5,
+                    size: Math.random() * 300 + 200,
+                    color: colors[i % colors.length]
+                });
+            }
+        }
+
+        let mouse = { x: -1000, y: -1000 };
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+        });
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            points.forEach(p => {
+                const dx = mouse.x - p.x;
+                const dy = mouse.y - p.y;
+                const dist = Math.sqrt(dx*dx + dy*dy);
+                if (dist < 800) {
+                    p.vx += dx * 0.00002;
+                    p.vy += dy * 0.00002;
+                }
+                p.x += p.vx; p.y += p.vy;
+                if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+                if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+                ctx.beginPath();
+                const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size);
+                grad.addColorStop(0, p.color);
+                grad.addColorStop(1, 'transparent');
+                ctx.fillStyle = grad;
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fill();
+            });
+            requestAnimationFrame(animate);
+        }
+        window.addEventListener('resize', init);
+        init(); animate();
+    }
+</script>
+</body></html>
