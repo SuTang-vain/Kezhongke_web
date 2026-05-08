@@ -4,12 +4,14 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.db.session import get_session
 from app.core.config import settings
 from app.api.auth import router as auth_router
+from app.api.article import router as article_router
 import redis.asyncio as redis
 
 app = FastAPI(title=settings.PROJECT_NAME)
 
 # Include Routers
 app.include_router(auth_router, prefix="/api")
+app.include_router(article_router, prefix="/api")
 
 @app.get("/api/health")
 async def health_check():

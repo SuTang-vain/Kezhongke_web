@@ -7,6 +7,7 @@ from sqlmodel import SQLModel
 from app.core.config import settings
 # Import models here for metadata
 from app.models.user import User
+from app.models.article import Article
 
 config = context.config
 if config.config_file_name is not None:

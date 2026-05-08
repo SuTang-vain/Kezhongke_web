@@ -26,8 +26,8 @@
 - [x] **[NEW]** 个人信息 management 接口 (GET/PATCH /users/me)
 - [x] **[NEW]** 首页与全局导航栏登录态动态显示
 
-### Phase 2: 内容挂载系统 (PENDING)
-- [ ] 文章元数据管理 (PostgreSQL)
+### Phase 2: 内容挂载系统 (IN PROGRESS)
+- [x] 文章元数据管理 (PostgreSQL)
 - [ ] Markdown/PDF 安全预览引擎
 - [ ] Nginx 静态目录别名配置
 
@@ -40,7 +40,10 @@
 - [x] POST /api/auth/verify-otp - 验证并注册
 - [x] POST /api/auth/login - 登录
 - [x] GET /api/auth/me - 获取个人资料
-- [x] **[DONE]** PATCH /api/auth/me - 更新个人资料
+- [x] PATCH /api/auth/me - 更新个人资料
+- [x] **[NEW]** GET /api/articles - 文章列表获取
+- [x] **[NEW]** GET /api/articles/{slug} - 文章详情获取
+- [x] **[NEW]** POST /api/articles - 创建文章 (需Admin/Author权限)
 
 ## 5. 待解决问题
 1.  **安全加固**: 关闭 DB/Redis 外部端口。
