@@ -47,8 +47,8 @@
 - [x] **[NEW]** POST /api/articles - 创建文章 (需Admin/Author权限)
 
 ## 5. 待解决问题
-1.  **安全加固**: 关闭 DB/Redis 外部端口。
-2.  **HTTPS**: Certbot SSL 证书申请。
+1.  **安全加固**: ✅ 已完成 (DB/Redis 绑定 127.0.0.1，防火墙清理 8888)
+2.  **HTTPS**: ~~Certbot SSL 证书申请~~ ✅ 已配置 (阿里云证书 + Nginx TLSv1.2/1.3 + HTTP→HTTPS 301重定向)
 
 ## 6. 本地开发工作流 (Local Development Workflow)
 为支持在本地修改代码并验证，请遵循以下步骤：
