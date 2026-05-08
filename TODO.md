@@ -26,10 +26,10 @@
 - [x] **[NEW]** 个人信息 management 接口 (GET/PATCH /users/me)
 - [x] **[NEW]** 首页与全局导航栏登录态动态显示
 
-### Phase 2: 内容挂载系统 (IN PROGRESS)
+### Phase 2: 内容挂载系统 (DONE)
 - [x] 文章元数据管理 (PostgreSQL)
-- [ ] Markdown/PDF 安全预览引擎
-- [ ] Nginx 静态目录别名配置
+- [x] Nginx 静态目录别名配置 (已配置 /content/ 安全静态别名，关闭目录索引)
+- [x] Markdown/PDF 安全预览引擎 (通过 /api/articles/{slug}/preview 进行路径校验、类型限制与安全预览)
 
 ### Phase 3: 项目引擎与生态 (PENDING)
 - [ ] 项目注册管理接口
@@ -43,6 +43,7 @@
 - [x] PATCH /api/auth/me - 更新个人资料
 - [x] **[NEW]** GET /api/articles - 文章列表获取
 - [x] **[NEW]** GET /api/articles/{slug} - 文章详情获取
+- [x] **[NEW]** GET /api/articles/{slug}/preview - 安全预览 Markdown/PDF 内容
 - [x] **[NEW]** POST /api/articles - 创建文章 (需Admin/Author权限)
 
 ## 5. 待解决问题
@@ -59,4 +60,4 @@
 6. **同步到服务器**: 验证无误后，将本地代码 commit 到 git 并推送到远端，然后在服务器 pull，或直接修改 `deploy.sh` 从本地推送到服务器。
 
 ---
-*更新时间: 2026-05-07 23:00 (CST)*
+*更新时间: 2026-05-08 14:45 (CST)*

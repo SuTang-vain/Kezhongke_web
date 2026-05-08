@@ -22,6 +22,11 @@ class Settings(BaseSettings):
     SMTP_USER: str = ""
     SMTP_PASSWORD: str = ""
 
+    # Content preview settings
+    CONTENT_ROOT: str = "/var/www/kezhongke_content"
+    MARKDOWN_MAX_BYTES: int = 1024 * 1024 * 2
+    PDF_MAX_BYTES: int = 1024 * 1024 * 50
+
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
 settings = Settings()

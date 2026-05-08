@@ -1,7 +1,8 @@
 from fastapi import APIRouter, HTTPException, Depends
 from typing import List
-from app.models.article import ArticleCreate, ArticleRead
+from app.models.article import ArticleCreate, ArticlePreview, ArticleRead
 from app.services.article import article_service
+from app.services.content import content_preview_service
 from app.api.auth import get_current_user_obj
 
 router = APIRouter(prefix="/articles", tags=["articles"])
@@ -19,6 +20,17 @@ async def get_article(slug: str):
         # Require auth to view unpublished articles
         raise HTTPException(status_code=403, detail="Article is not published")
     return article
+
+@router.get("/{slug}/preview", response_model=ArticlePreview)
+async def preview_article(slug: str):
+    article = await article_service.get_article_by_slug(slug)
+    if not article:
+        raise HTTPException(status_code=404, detail="Article not found")
+    if not article.is_published:
+        raise HTTPException(status_code=403, detail="Article is not published")
+
+    preview = await content_preview_service.build_preview(article.file_path)
+    return {**article.model_dump(), **preview}
 
 @router.post("/", response_model=ArticleRead)
 async def create_article(payload: ArticleCreate, current_user=Depends(get_current_user_obj)):

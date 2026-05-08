@@ -1,6 +1,6 @@
 from uuid import UUID, uuid4
 from sqlmodel import SQLModel, Field
-from typing import Optional
+from typing import Literal, Optional
 from datetime import datetime, timezone
 
 class ArticleBase(SQLModel):
@@ -12,8 +12,8 @@ class ArticleBase(SQLModel):
     file_path: str = Field(index=True) # Relative path in the content directory
     author_id: Optional[UUID] = Field(default=None, foreign_key="user.id")
     is_published: bool = Field(default=False)
-    created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
-    updated_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+    created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc).replace(tzinfo=None))
+    updated_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc).replace(tzinfo=None))
 
 class Article(ArticleBase, table=True):
     id: UUID = Field(default_factory=uuid4, primary_key=True)
@@ -23,3 +23,9 @@ class ArticleCreate(ArticleBase):
 
 class ArticleRead(ArticleBase):
     id: UUID
+
+class ArticlePreview(ArticleRead):
+    preview_type: Literal["markdown", "pdf"]
+    content_type: str
+    content_url: str
+    content: Optional[str] = None

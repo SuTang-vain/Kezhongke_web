@@ -302,6 +302,13 @@
         .markdown-body code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size: 0.9em; background: rgba(173,44,13,0.05); padding: 0.2em 0.4em; border-radius: 6px; color: #8b1a00; }
         .markdown-body pre code { background: transparent; padding: 0; color: inherit; }
         .markdown-body img { max-width: 100%; height: auto; border-radius: 16px; box-shadow: 0 8px 24px rgba(0,0,0,0.08); margin: 2em 0; }
+        .pdf-preview {
+            width: 100%;
+            min-height: min(78vh, 920px);
+            border: 0;
+            border-radius: 24px;
+            background: rgba(255, 255, 255, 0.72);
+        }
         
         .article-glass {
             background: rgba(255, 255, 255, 0.65);
@@ -553,13 +560,12 @@
         }
 
         try {
-            // 1. Fetch Metadata
-            const metaRes = await fetch(`/api/articles/${slug}`);
-            if (!metaRes.ok) {
-                const errData = await metaRes.json();
+            const previewRes = await fetch(`/api/articles/${encodeURIComponent(slug)}/preview`);
+            if (!previewRes.ok) {
+                const errData = await previewRes.json().catch(() => ({}));
                 throw new Error(errData.detail || "文章未找到");
             }
-            const articleMeta = await metaRes.json();
+            const articleMeta = await previewRes.json();
 
             // Populate Metadata UI
             document.title = `${articleMeta.title} | Kezhongke`;
@@ -579,25 +585,42 @@
                 });
             }
 
-            // 2. Fetch Raw Markdown
-            const mdRes = await fetch(`/content/${articleMeta.file_path}`);
-            if (!mdRes.ok) throw new Error("无法读取 Markdown 原文");
-            let rawMd = await mdRes.text();
+            const markdownContainer = document.getElementById('markdown-container');
 
-            // Render Markdown
-            marked.setOptions({
-                highlight: function(code, lang) {
-                    const language = hljs.getLanguage(lang) ? lang : 'plaintext';
-                    return hljs.highlight(code, { language }).value;
-                },
-                breaks: true,
-                gfm: true
-            });
+            if (articleMeta.preview_type === 'pdf') {
+                const iframe = document.createElement('iframe');
+                iframe.className = 'pdf-preview';
+                iframe.src = articleMeta.content_url;
+                iframe.title = articleMeta.title;
+                markdownContainer.replaceChildren(iframe);
+            } else {
+                const rawMd = articleMeta.content || "";
 
-            const dirtyHtml = marked.parse(rawMd);
-            const cleanHtml = DOMPurify.sanitize(dirtyHtml);
-            
-            document.getElementById('markdown-container').innerHTML = cleanHtml;
+                marked.setOptions({
+                    highlight: function(code, lang) {
+                        const language = hljs.getLanguage(lang) ? lang : 'plaintext';
+                        return hljs.highlight(code, { language }).value;
+                    },
+                    breaks: true,
+                    gfm: true
+                });
+
+                const dirtyHtml = marked.parse(rawMd);
+                const cleanHtml = DOMPurify.sanitize(dirtyHtml, {
+                    USE_PROFILES: { html: true },
+                    FORBID_TAGS: ['style', 'script', 'iframe', 'object', 'embed'],
+                    FORBID_ATTR: ['style', 'onerror', 'onload']
+                });
+
+                markdownContainer.innerHTML = cleanHtml;
+                markdownContainer.querySelectorAll('a[href]').forEach(anchor => {
+                    anchor.setAttribute('target', '_blank');
+                    anchor.setAttribute('rel', 'noopener noreferrer');
+                });
+                if (window.hljs) {
+                    markdownContainer.querySelectorAll('pre code').forEach(block => hljs.highlightElement(block));
+                }
+            }
             
             // Show content
             document.getElementById('loading').classList.add('hidden');
