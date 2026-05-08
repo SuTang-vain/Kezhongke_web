@@ -481,50 +481,15 @@
 </header>
 
 <!-- Featured Post -->
-<article class="liquid-glass rounded-[2.5rem] overflow-hidden grid grid-cols-1 lg:grid-cols-2 gap-0 group cursor-pointer">
-<div class="h-64 lg:h-auto bg-surface-variant relative overflow-hidden">
-<div class="absolute inset-0 bg-gradient-to-br from-primary-container/20 to-secondary-container/20 mix-blend-overlay group-hover:scale-110 transition-transform duration-700"></div>
+<div id="articles-loading" class="flex flex-col items-center justify-center py-20 space-y-4">
+    <div class="w-10 h-10 border-4 border-primary/20 border-t-primary rounded-full animate-spin"></div>
+    <p class="text-on-surface-variant font-medium animate-pulse">正在拉取期刊文献...</p>
 </div>
-<div class="p-12 flex flex-col justify-center space-y-6">
-<span class="font-label-caps text-label-caps text-primary tracking-widest">精选专题 · Featured</span>
-<h2 class="font-display-hero text-4xl leading-tight group-hover:text-primary transition-colors">技术系统中的“人文界面”：从操纵到共鸣</h2>
-<p class="font-body-lg text-on-surface-variant">探讨如何通过设计干预，让复杂的智能系统呈现出可感知、可对话的人文特质。</p>
-<div class="flex items-center gap-4 pt-4">
-<span class="text-xs font-label-caps text-outline uppercase tracking-wider">2026 / 04 / 28</span>
-<span class="material-symbols-outlined text-primary group-hover:translate-x-2 transition-transform">arrow_right_alt</span>
-</div>
-</div>
-</article>
+
+<div id="featured-post-container" class="hidden"></div>
 
 <!-- Post List -->
-<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-<!-- Article 1 -->
-<article class="liquid-glass rounded-3xl p-8 flex flex-col gap-6 group cursor-pointer">
-<div class="flex justify-between items-start">
-<span class="font-label-caps text-xs text-outline uppercase tracking-widest">AI 协作 · 2026/04/12</span>
-</div>
-<div class="space-y-3">
-<h3 class="font-headline-md text-2xl group-hover:text-primary transition-colors">多智能体网络中的信任重建机制</h3>
-<p class="font-body-md text-on-surface-variant line-clamp-2">在自主代理交互日益频繁的当下，如何在算法层面编织具备人文温度的信任契约。</p>
-</div>
-<div class="mt-auto pt-4 flex items-center text-primary font-label-caps text-xs gap-1 group-hover:gap-2 transition-all">
-阅读全文 READ MORE <span class="material-symbols-outlined text-sm">arrow_forward</span>
-</div>
-</article>
-
-<!-- Article 2 -->
-<article class="liquid-glass rounded-3xl p-8 flex flex-col gap-6 group cursor-pointer">
-<div class="flex justify-between items-start">
-<span class="font-label-caps text-xs text-outline uppercase tracking-widest">技术哲学 · 2026/04/05</span>
-</div>
-<div class="space-y-3">
-<h3 class="font-headline-md text-2xl group-hover:text-primary transition-colors">液态玻璃视觉范式解析</h3>
-<p class="font-body-md text-on-surface-variant line-clamp-2">从高精度光学到有机流动性，探索下一代UI设计语言如何传递冷静而深刻的学术气质。</p>
-</div>
-<div class="mt-auto pt-4 flex items-center text-primary font-label-caps text-xs gap-1 group-hover:gap-2 transition-all">
-阅读全文 READ MORE <span class="material-symbols-outlined text-sm">arrow_forward</span>
-</div>
-</article>
+<div id="post-list-container" class="grid grid-cols-1 md:grid-cols-2 gap-8 hidden">
 </div>
 </main>
 
@@ -604,5 +569,75 @@
         window.addEventListener('resize', init);
         init(); animate();
     }
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+    const loading = document.getElementById('articles-loading');
+    const featuredContainer = document.getElementById('featured-post-container');
+    const listContainer = document.getElementById('post-list-container');
+
+    try {
+        const res = await fetch('/api/articles/');
+        if (!res.ok) throw new Error('Failed to fetch articles');
+        const articles = await res.json();
+        
+        loading.classList.add('hidden');
+
+        if (articles.length > 0) {
+            // Render Featured Article (the first one)
+            const featured = articles[0];
+            const dateObj = new Date(featured.created_at);
+            const dateStr = dateObj.toLocaleDateString('zh-CN', { year: 'numeric', month: '2-digit', day: '2-digit' }).replace(/\//g, ' / ');
+
+            featuredContainer.innerHTML = `
+<article class="liquid-glass rounded-[2.5rem] overflow-hidden grid grid-cols-1 lg:grid-cols-2 gap-0 group cursor-pointer" onclick="window.location.href='/article?slug=${featured.slug}'">
+    <div class="h-64 lg:h-auto bg-surface-variant relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary-container/20 to-secondary-container/20 mix-blend-overlay group-hover:scale-110 transition-transform duration-700"></div>
+    </div>
+    <div class="p-12 flex flex-col justify-center space-y-6">
+        <span class="font-label-caps text-label-caps text-primary tracking-widest">${featured.category} · Featured</span>
+        <h2 class="font-display-hero text-4xl leading-tight group-hover:text-primary transition-colors">${featured.title}</h2>
+        <p class="font-body-lg text-on-surface-variant">${featured.summary || ''}</p>
+        <div class="flex items-center gap-4 pt-4">
+            <span class="text-xs font-label-caps text-outline uppercase tracking-wider">${dateStr}</span>
+            <span class="material-symbols-outlined text-primary group-hover:translate-x-2 transition-transform">arrow_right_alt</span>
+        </div>
+    </div>
+</article>`;
+            featuredContainer.classList.remove('hidden');
+
+            // Render Remaining Articles
+            if (articles.length > 1) {
+                const restArticles = articles.slice(1);
+                let listHtml = '';
+                restArticles.forEach(art => {
+                    const dObj = new Date(art.created_at);
+                    const dStr = dObj.toLocaleDateString('zh-CN', { year: 'numeric', month: '2-digit', day: '2-digit' });
+                    listHtml += `
+<article class="liquid-glass rounded-3xl p-8 flex flex-col gap-6 group cursor-pointer" onclick="window.location.href='/article?slug=${art.slug}'">
+    <div class="flex justify-between items-start">
+        <span class="font-label-caps text-xs text-outline uppercase tracking-widest">${art.category} · ${dStr}</span>
+    </div>
+    <div class="space-y-3">
+        <h3 class="font-headline-md text-2xl group-hover:text-primary transition-colors">${art.title}</h3>
+        <p class="font-body-md text-on-surface-variant line-clamp-2">${art.summary || ''}</p>
+    </div>
+    <div class="mt-auto pt-4 flex items-center text-primary font-label-caps text-xs gap-1 group-hover:gap-2 transition-all">
+        阅读全文 READ MORE <span class="material-symbols-outlined text-sm">arrow_forward</span>
+    </div>
+</article>`;
+                });
+                listContainer.innerHTML = listHtml;
+                listContainer.classList.remove('hidden');
+            }
+        } else {
+            featuredContainer.innerHTML = `<p class="text-center text-on-surface-variant py-10">暂无发布的期刊文章。</p>`;
+            featuredContainer.classList.remove('hidden');
+        }
+
+    } catch (e) {
+        loading.innerHTML = `<p class="text-error font-medium">加载失败，请稍后重试。</p>`;
+    }
+});
 </script>
 </body></html>
