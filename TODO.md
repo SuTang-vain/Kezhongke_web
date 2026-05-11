@@ -1,4 +1,4 @@
-# 壳中客 Kezhongke - 统一开发进度看板 (v3.1)
+# 壳中客 Kezhongke - 统一开发进度看板 (v3.2)
 
 ## 0. 当前运行状态 (System Status)
 *   **后端 API**: ● 运行中 (Port 8000, systemd 守护, Proxy via Nginx /api/)
@@ -33,6 +33,7 @@
 - [x] 文章元数据管理 (PostgreSQL)
 - [x] Nginx 静态目录别名配置 (已配置 /content/ 安全静态别名，关闭目录索引)
 - [x] Markdown/PDF 安全预览引擎 (通过 /api/articles/{slug}/preview 进行路径校验、类型限制与安全预览)
+- [x] 文章封面图系统 (Article.cover_image 字段 + /content/covers/ 存储，期刊/首页动态渲染)
 
 ### Phase 2.5: 首页与期刊联动 (DONE)
 - [x] 首页「最新洞察」查看全部按钮 → 跳转 /journal
@@ -41,13 +42,16 @@
 ### Phase 2.6: 导航栏组件化 (DONE)
 - [x] 提取导航栏 CSS 为 shared/nav.css
 - [x] 提取导航栏 HTML + 登录态 JS 为 shared/nav.js（动态注入）
-- [x] 各页面移除内联导航栏，改为引用共享组件（journal/about/grow/path/atelier 已完成）
-- [x] 修复全站下拉卡片标签不匹配（`<button>` → `<div>`）与透明度问题（0.7 → 0.92）
-- [x] 导航栏 z-index 统一（nav z-[9999], dropdown z-[100], modal z-[10001]）
-- [x] 首页导航栏组件化适配（移除残留 canvas 节点，保留原 `body::before inset: -12%` 视觉背景，修复底部空白滚动）
-- [x] 共享 `.liquid-glass` 基础样式补回 shared/nav.css，恢复首页卡片与期刊卡片的玻璃容器背景、边框、阴影
-- [x] 共享导航资源加版本号 `v=20260509-glass2`，避免浏览器继续使用旧缓存
-- [x] 用户下拉菜单改为 CSS/JS 稳定显隐，不再依赖运行时 Tailwind `group-hover:*` 生成
+- [x] 各页面移除内联导航栏，改为引用共享组件
+- [x] 修复全站下拉卡片标签不匹配与透明度问题
+- [x] 导航栏 z-index 统一
+- [x] 共享 `.liquid-glass` 基础样式、资源版本号、下拉菜单稳定显隐
+
+### Phase 2.7: 真实内容挂载 (DONE)
+- [x] 工坊页「原型库 Prototypes」更名为「项目工坊 Projects」
+- [x] 工坊页挂载真实项目 AetheL（GitHub 外链跳转 + logo 图标）
+- [x] 生长页挂载真实教程 Handy Multi-Agent（飞书外链 + DataWhale × CAMEL 共建课程标签）
+- [x] 文章封面图挂载（后端开发的范式转移、面向青年群体的 AI 前沿知识传播）
 
 ### Phase 3: 项目引擎与生态 (PENDING)
 - [ ] 项目注册管理接口
@@ -83,6 +87,8 @@
 - 导航栏修改方式: 编辑 `/var/www/kezhongke/shared/nav.css` 或 `nav.js`，全站自动生效
 - 首页底部空白滚动已修复：不要恢复 `<canvas id="liquid-canvas">`，否则脚本会把 canvas 设为视口尺寸并重新撑高页面。
 - `.liquid-glass` 是多个页面共用的基础容器样式，必须保留在 shared/nav.css 中；移除后首页入口卡片会失去玻璃背景。
+- 文章封面图存储在 `/var/www/kezhongke_content/covers/`，通过 `/content/covers/` 路径访问。
+- 工坊项目挂载目前为静态外链，Phase 3 完成后可改为 API 驱动。
 
 ---
 *更新时间: 2026-05-09 (CST)*

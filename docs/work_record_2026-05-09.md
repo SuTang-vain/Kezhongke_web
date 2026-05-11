@@ -162,3 +162,58 @@
 
 ---
 *更新时间: 2026-05-09 (CST)*
+
+---
+
+## 附录：后续工作（同日 17:00-19:00）
+
+### A. 文章封面图系统
+
+#### 数据模型扩展
+- Article 模型新增 `cover_image: Optional[str]` 字段
+- Alembic 迁移 `f468afac6d94_add_cover_image_to_article` 已执行
+- 修复迁移脚本缺少 `import sqlmodel` 的问题
+
+#### 封面图上传
+- 创建 `/var/www/kezhongke_content/covers/` 目录
+- 上传封面图：
+  - `ai-engineering-paper-to-product.png`（后端开发的范式转移）
+  - `youth-ai-knowledge-propagation.png`（面向青年群体的 AI 前沿知识传播）
+- 数据库更新：通过 psql 更新对应文章的 cover_image 字段
+
+#### 前端渲染
+- 期刊页 Featured 文章：有 cover_image 时显示 `<img>`，无图时保留渐变色占位
+- 期刊页列表卡片：有封面图时在顶部显示 `h-48` 图片区域，无图时不显示
+- 首页洞察卡片：同上逻辑
+
+### B. 工坊页真实项目挂载
+
+- 「原型库 Prototypes」更名为「项目工坊 Projects」
+- 第一个占位卡片替换为真实项目 **AetheL**：
+  - 链接：https://github.com/SuTang-vain/AetheL（新标签页打开）
+  - Logo：上传 `/kezhongke_logo/aethel-logo.png` 替换 Material 图标
+  - 介绍：面向产品构思的 AI 认知工作区
+  - 状态标签：开发中 · Active
+
+### C. 生长页真实教程挂载
+
+- 第一个占位卡片替换为真实教程 **Handy Multi-Agent**：
+  - 链接：飞书文档（https://dcnk566ts94k.feishu.cn/wiki/Ft45w5wFMidIqMkx95Qc0eDvnHf）
+  - 标签：DataWhale × CAMEL 共建课程（琥珀色高亮）
+  - 介绍：基于 CAMEL 框架的多智能体开发教程
+  - 标签和标题经过视觉优化：单一共建课程标签、干净标题、统一行间距
+
+### D. 服务器文件变更（追加）
+
+| 文件 | 操作 |
+|------|------|
+| `/var/www/kezhongke_backend/app/models/article.py` | 修改（新增 cover_image 字段） |
+| `/var/www/kezhongke_backend/alembic/versions/f468afac6d94_...` | 新增（数据库迁移） |
+| `/var/www/kezhongke_content/covers/ai-engineering-paper-to-product.png` | 新增（封面图） |
+| `/var/www/kezhongke_content/covers/youth-ai-knowledge-propagation.png` | 新增（封面图） |
+| `/var/www/kezhongke/kezhongke_logo/aethel-logo.png` | 新增（项目 logo） |
+| `/var/www/kezhongke/journal/code.html` | 修改（封面图渲染） |
+| `/var/www/kezhongke/home/code.html` | 修改（封面图渲染） |
+| `/var/www/kezhongke/atelier/code.html` | 修改（更名 + AetheL 项目挂载） |
+| `/var/www/kezhongke/grow/code.html` | 修改（Handy Multi-Agent 教程挂载） |
+| `/var/www/kezhongke/TODO.md` | 修改（v3.1 → v3.2） |

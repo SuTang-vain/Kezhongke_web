@@ -8,8 +8,9 @@ class ArticleBase(SQLModel):
     slug: str = Field(unique=True, index=True)
     summary: Optional[str] = Field(default=None)
     category: str = Field(default="General", index=True)
-    tags: Optional[str] = Field(default=None) # Stored as comma-separated string for simplicity
-    file_path: str = Field(index=True) # Relative path in the content directory
+    tags: Optional[str] = Field(default=None)
+    file_path: str = Field(index=True)
+    cover_image: Optional[str] = Field(default=None)
     author_id: Optional[UUID] = Field(default=None, foreign_key="user.id")
     is_published: bool = Field(default=False)
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc).replace(tzinfo=None))
